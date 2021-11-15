@@ -19,7 +19,7 @@ from django.utils import timezone
 
 
 # models.Model makes this object a Model/Table object in the msqlite database
-# Think of this as a spreadsheet table. You can create many posts.
+# Think of this as a spreadsheet table. You can create many posts (each row is a post).
 class Post(models.Model):
     """
     The following properties are fields in the Post model.

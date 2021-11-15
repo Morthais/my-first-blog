@@ -1,3 +1,4 @@
+<!-- Django Template for blog posts -->
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,16 +9,18 @@
             <h1><a href="/">Django Girls Blog</a></h1>
         </header>
 
-        <article>
-            <time>published: 14.06.2014, 12:14</time>
-            <h2><a href="">My first post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        </article>
+        <!-- Use Django template tags to show the posts (passed from views.py, created in models.py) -->
+        {% for post in posts %}
+            <!-- Django understands posts as a list of objects. -->
+            <article>
+                <!-- post attributes are defined in models.py -->
+                <time>published: {{ post.published_date }}</time>
+                <h2><a href="">{{ post.title }}</a></h2>
+                <p>{{ post.text|linebreaksbr }}</p>
+                <!-- |linebreaksbr is piping the posts' text through 
+                    a filter to convert line-breaks into paragraphs -->
+            </article>
+        {% endfor %}
 
-        <article>
-            <time>published: 14.06.2014, 12:14</time>
-            <h2><a href="">My second post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-        </article>
     </body>
 </html>
